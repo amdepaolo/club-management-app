@@ -25,7 +25,7 @@ Ideas:
   - models for clubs, users, with join table for membership
   - Club: name, description, meeting time, meeting area, max min memberships
     - Create Read Update Destroy limited to users
-  - User: first name, last name, username, image, bio, admin?, 
+  - User: first name, last name, username, image, email address, bio, admin?, 
     - Create Read Update Destroy
   - membership, club_id, user_id, admin?
     - Create Destroy
@@ -39,5 +39,6 @@ Ideas:
     - send messages to clubs I am in charge of
   - Client Side Routes:
     - User page
-    - Club search
-    - Sign-up
+    - Club list w/ filter bar,
+    - create a club page
+    - Sign-up/sign-in

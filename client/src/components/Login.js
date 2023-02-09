@@ -1,12 +1,20 @@
 import React, {useState} from 'react'
 
-function Login(){
+function Login({onLogin}){
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log({email: email})
+        fetch('/login', {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          })
+        .then(r => r.json())
+        .then(onLogin)
     }
 
     return (
