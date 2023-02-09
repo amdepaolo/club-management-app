@@ -1,17 +1,15 @@
 import { useState, useEffect } from "react";
+import SignUp from "./components/SignUp";
+import Login from "./components/Login";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
 
   return (
     <div className="App">
-      <h1>Page Count: {count}</h1>
+      <h1>Club Connection!</h1>
+      <p> This is a placeholder, the app will come later and will look better</p>
+      <Login></Login>
+      <SignUp></SignUp>
     </div>
   );
 }
