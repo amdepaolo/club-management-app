@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function SignUp(){
+function SignUp({onSignUp}){
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -9,7 +9,16 @@ function SignUp(){
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log({first: firstName, last: lastName, email: email})
+        const newUserObj = { email: email, first_name: firstName, last_name: lastName, password: password, password_confirmation: confirmation};
+        fetch('/users', {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newUserObj),
+          })
+        .then(r => r.json())
+        .then(onSignUp)
     }
 
     return(

@@ -22,7 +22,7 @@ function App() {
       {user? <p>User logged in</p>: <p>No User logged in</p>}
       <button onClick={logOut}>Log Out</button>
       <Login onLogin={setUser}></Login>
-      <SignUp></SignUp>
+      <SignUp onSignUp={setUser}></SignUp>
     </div>
   );
 }
