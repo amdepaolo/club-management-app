@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
-import SignUp from "./components/SignUp";
-import Login from "./components/Login";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const [user, setUser] = useState(null)
-  // useEffect(()=>{
-  //   fetch('/me')
-  // })
+  useEffect(()=>{
+    fetch('/me')
+    .then(r => {if (r.ok){
+      r.json().then(user => setUser(user))
+    }})
+  },[]);
 
   function logOut(){
     fetch('/logout', {method: 'DELETE'})
@@ -15,14 +17,14 @@ function App() {
     )
   }
 
-  return (
+  if (!user) return( <LandingPage setUser={setUser} /> )
+
+  else return (
     <div className="App">
       <h1>Club Connection!</h1>
       <p> This is a placeholder, the app will come later and will look better</p>
       {user? <p>User logged in</p>: <p>No User logged in</p>}
       <button onClick={logOut}>Log Out</button>
-      <Login onLogin={setUser}></Login>
-      <SignUp onSignUp={setUser}></SignUp>
     </div>
   );
 }
