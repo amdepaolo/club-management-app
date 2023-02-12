@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import LandingPage from "./components/LandingPage";
+import CreateClubForm from "./components/CreateClubForm";
 
 function App() {
   const [user, setUser] = useState(null)
@@ -25,6 +26,7 @@ function App() {
       <p> This is a placeholder, the app will come later and will look better</p>
       {user? <p>User logged in</p>: <p>No User logged in</p>}
       <button onClick={logOut}>Log Out</button>
+      <CreateClubForm />
     </div>
   );
 }
