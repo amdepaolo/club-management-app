@@ -19,4 +19,9 @@ Club.create(name: "Book Club", description: Faker::Lorem.paragraph, meeting_time
 Club.create(name: "Drama club", description: Faker::Lorem.paragraph, meeting_time: "TBA", meeting_area: "Auditorium", max_membership: 60)
 Club.create(name: "Photography Club", description: Faker::Lorem.paragraph, meeting_time: "Every other Monday from 3:30-5", meeting_area: "Cafeteria", max_membership: 18)
 
+puts "seeding membership"
+Membership.create(club_id: 1, user_id: 1)
+Membership.create(club_id: 3, user_id: 1)
+Membership.create(club_id: 4, user_id: 1)
+
 puts "done seeding"
