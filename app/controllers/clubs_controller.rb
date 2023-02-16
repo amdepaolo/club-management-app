@@ -2,7 +2,7 @@ class ClubsController < ApplicationController
 
     def index
         clubs = Club.all
-        render json: clubs
+        render json: clubs, user_id: session[:user_id]
     end
 
     def show
