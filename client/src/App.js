@@ -4,6 +4,7 @@ import LandingPage from "./components/LandingPage";
 import CreateClubForm from "./components/CreateClubForm";
 import ViewClubs from "./components/ViewClubs";
 import Profile from "./components/Profile";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [user, setUser] = useState(null)
@@ -31,6 +32,7 @@ function App() {
 
   else return (
     <div className="App">
+      <NavBar />
       <h1>Club Connection!</h1>
       <button onClick={logOut}>Log Out</button>
       <Switch>
