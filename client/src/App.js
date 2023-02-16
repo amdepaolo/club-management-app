@@ -30,7 +30,7 @@ function App() {
 
   function updateClubs(newClub){
     const updatedClubsList = [...clubs, newClub];
-    setClubs[updatedClubsList];
+    setClubs(updatedClubsList);
   }
 
   if (!user) return( <LandingPage setUser={setUser} /> )
