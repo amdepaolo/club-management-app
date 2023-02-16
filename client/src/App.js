@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import CreateClubForm from "./components/CreateClubForm";
 import ViewClubs from "./components/ViewClubs";
+import Profile from "./components/Profile";
 
 function App() {
   const [user, setUser] = useState(null)
@@ -30,11 +32,18 @@ function App() {
   else return (
     <div className="App">
       <h1>Club Connection!</h1>
-      <p> This is a placeholder, the app will come later and will look better</p>
-      {user? <p>User logged in</p>: <p>No User logged in</p>}
       <button onClick={logOut}>Log Out</button>
-      <CreateClubForm />
-      <ViewClubs clubs={clubs} />
+      <Switch>
+        <Route exact path='/profile'>
+          <Profile user={user}/> 
+        </Route>
+        <Route exact path='/create'>
+          <CreateClubForm />
+        </Route>
+        <Route exact path='/'>
+          <ViewClubs clubs={clubs} />
+        </Route>
+      </Switch>
     </div>
   );
 }
