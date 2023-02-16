@@ -28,6 +28,11 @@ function App() {
     )
   }
 
+  function updateClubs(newClub){
+    const updatedClubsList = [...clubs, newClub];
+    setClubs[updatedClubsList];
+  }
+
   if (!user) return( <LandingPage setUser={setUser} /> )
 
   else return (
@@ -40,7 +45,7 @@ function App() {
           <Profile user={user}/> 
         </Route>
         <Route exact path='/create'>
-          <CreateClubForm />
+          <CreateClubForm updateClubs={updateClubs} />
         </Route>
         <Route exact path='/'>
           <ViewClubs clubs={clubs} />

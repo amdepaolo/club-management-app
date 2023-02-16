@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function CreateClubForm(){
+function CreateClubForm({updateClubs}){
     const[name, setName] = useState('');
     const[description, setDescription]= useState('');
     const[time, setTime] = useState('');
@@ -18,7 +18,7 @@ function CreateClubForm(){
             body: JSON.stringify(clubObj),
           })
         .then(r => r.json())
-        .then(r => console.log(r))
+        .then(r => updateClubs(r))
     }
 
     return(
