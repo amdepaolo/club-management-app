@@ -42,3 +42,8 @@ Ideas:
     - Club list w/ filter bar,
     - create a club page
     - Sign-up/sign-in
+
+TO-DO:
+
+- Update abilities for Users and clubs
+- Delete Users and Clubs
