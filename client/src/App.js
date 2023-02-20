@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import CreateClubForm from "./components/CreateClubForm";
-import ViewClubs from "./components/ViewClubs";
+import ClubList from "./components/ClubList";
 import Profile from "./components/Profile";
 import NavBar from "./components/NavBar";
 import EditClub from "./components/EditClub";
@@ -58,7 +58,6 @@ function App() {
   function updateMembership(id, memberStatus){
     const updatedClubsList = clubs.map(club =>{
       if (id === club.id) {
-        debugger
         return {...club, member_id: memberStatus }
       } else return club
     });
@@ -84,7 +83,7 @@ function App() {
           <EditClub club={selectedClub} onUpdateClick={updateClubs} onDeleteClick={deleteClubs}/>
         </Route>
         <Route exact path='/clubs'>
-          <ViewClubs clubs={clubs} onEditClick={changeSelected} onMemberClick={updateMembership}/>
+          <ClubList clubs={clubs} onEditClick={changeSelected} onMemberClick={updateMembership}/>
         </Route>
         <Route path='/'>
           <Redirect to='/clubs'/>
