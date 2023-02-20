@@ -1,5 +1,13 @@
 class MembershipsController < ApplicationController
 
+    def index
+        club = Club.find(params[:club_id])
+        memberships = club.memberships
+        render json: memberships
+    rescue ActiveRecord::RecordNotFound
+        render json: {error: "Not found"}, status: :not_found
+    end
+
     def create
         membership = Membership.create!(user_id: session[:user_id], club_id: params[:club_id])
         render json: membership, status: :created
