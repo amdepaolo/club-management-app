@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Club({club, onEditClick, onMemberClick}){
+function Club({club, onMemberClick}){
 
     function handleJoin(){
         fetch('/clubs/'+club.id+'/memberships', {
@@ -37,7 +37,8 @@ function Club({club, onEditClick, onMemberClick}){
             <p>{club.description}</p>
             <p> Members: {club.current_memberships} of {club.max_membership} enrolled </p>
             {club.member_id? leaveButton:joinButton}
-            <Link exact to='/edit' onClick={()=>onEditClick(club.id)}>Edit?</Link>
+            <Link to={`/clubs/${club.id}`}>View</Link>
+            <Link to={`/clubs/${club.id}/edit`}>Edit?</Link>
         </div>
     )
 }

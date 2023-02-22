@@ -2,15 +2,13 @@ import { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import CreateClubForm from "./components/CreateClubForm";
-import ClubList from "./components/ClubList";
 import Profile from "./components/Profile";
 import NavBar from "./components/NavBar";
-import EditClub from "./components/EditClub";
+import ClubsPage from "./components/ClubsPage";
 
 function App() {
   const [user, setUser] = useState(null)
   const [clubs, setClubs] = useState([])
-  const [selectedClub, setSelectedClub] = useState({})
 
   useEffect(()=>{
     fetch('/me')
@@ -18,6 +16,7 @@ function App() {
       r.json().then(user => setUser(user))
     }})
   },[]);
+
   useEffect(()=>{
     fetch('/clubs')
     .then(r => r.json())
@@ -29,11 +28,6 @@ function App() {
     .then(r => {if (r.ok) 
       setUser(null)}
     )
-  }
-
-  function changeSelected(id){
-    const clubToSelect = clubs.find(club => club.id === id);
-    setSelectedClub(clubToSelect);
   }
 
   function addClubs(newClub){
@@ -79,14 +73,11 @@ function App() {
         <Route exact path='/create'>
           <CreateClubForm addClubs={addClubs} />
         </Route>
-        <Route exact path='/edit'>
-          <EditClub club={selectedClub} onUpdateClick={updateClubs} onDeleteClick={deleteClubs}/>
-        </Route>
-        <Route exact path='/clubs'>
-          <ClubList clubs={clubs} onEditClick={changeSelected} onMemberClick={updateMembership}/>
+        <Route path='/clubs'>
+          <ClubsPage clubs={clubs} updateMembership={updateMembership} updateClubs={updateClubs} deleteClubs={deleteClubs}/>
         </Route>
         <Route path='/'>
-          <Redirect to='/clubs'/>
+          <Redirect to='/profile'/>
         </Route>
       </Switch>
     </div>

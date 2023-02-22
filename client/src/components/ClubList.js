@@ -1,9 +1,9 @@
 import React from "react";
 import Club from "./Club";
 
-function ClubList({clubs, onEditClick, onMemberClick}){
+function ClubList({clubs, onMemberClick}){
 
-    const clubArr = clubs.map(club => <Club club={club} onEditClick={onEditClick} onMemberClick={onMemberClick} key={club.id}/>)
+    const clubArr = clubs.map(club => <Club club={club} onMemberClick={onMemberClick} key={club.id}/>)
 
     return(
         <div>

@@ -7,19 +7,16 @@ function NavBar(){
         <div>
             <NavLink
                 to="/profile"
-                exact
             >
                 My Profile
             </NavLink>
             <NavLink
                 to="/create"
-                exact
             >
                 Create A Club
             </NavLink>
             <NavLink
-                to="/"
-                exact
+                to="/clubs"
             >
                 Clubs
             </NavLink>
