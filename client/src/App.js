@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
-import CreateClubForm from "./components/CreateClubForm";
+import CreateClub from "./components/CreateClub";
 import NavBar from "./components/NavBar";
 import ClubsPage from "./components/ClubsPage";
 import UserPage from "./components/UserPage";
@@ -55,7 +55,6 @@ function App() {
         return {...club, member_id: memberStatus }
       } else return club
     });
-    console.log (updatedClubsList)
     setClubs(updatedClubsList)
   };
 
@@ -68,13 +67,17 @@ function App() {
       <button onClick={logOut}>Log Out</button>
       <Switch>
         <Route path='/profile'>
-          <UserPage user={user} setUser={setUser}/>
+          <UserPage user={user} setUser={setUser} clubs={clubs}/>
         </Route>
         <Route exact path='/create'>
-          <CreateClubForm addClubs={addClubs} />
+          <CreateClub addClubs={addClubs} />
         </Route>
         <Route path='/clubs'>
-          <ClubsPage clubs={clubs} updateMembership={updateMembership} updateClubs={updateClubs} deleteClubs={deleteClubs}/>
+          <ClubsPage 
+            clubs={clubs} 
+            updateClubs={updateClubs} 
+            updateMembership={updateMembership} 
+            deleteClubs={deleteClubs}/>
         </Route>
         <Route path='/'>
           <Redirect to='/clubs'/>
