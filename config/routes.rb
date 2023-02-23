@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   get '/hello', to: 'application#hello_world'
-  resources :users, only: [:create]
+  resources :users, only: [:create, :update, :destroy]
   resources :clubs do
     resources :memberships, only: [:index, :create, :destroy]
   end

@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import CreateClubForm from "./components/CreateClubForm";
-import Profile from "./components/Profile";
 import NavBar from "./components/NavBar";
 import ClubsPage from "./components/ClubsPage";
+import UserPage from "./components/UserPage";
 
 function App() {
   const [user, setUser] = useState(null)
@@ -67,8 +67,8 @@ function App() {
       <h1>Club Connection!</h1>
       <button onClick={logOut}>Log Out</button>
       <Switch>
-        <Route exact path='/profile'>
-          <Profile user={user}/> 
+        <Route path='/profile'>
+          <UserPage user={user} setUser={setUser}/>
         </Route>
         <Route exact path='/create'>
           <CreateClubForm addClubs={addClubs} />
@@ -77,7 +77,7 @@ function App() {
           <ClubsPage clubs={clubs} updateMembership={updateMembership} updateClubs={updateClubs} deleteClubs={deleteClubs}/>
         </Route>
         <Route path='/'>
-          <Redirect to='/profile'/>
+          <Redirect to='/clubs'/>
         </Route>
       </Switch>
     </div>
