@@ -10,6 +10,9 @@ require "faker"
 puts "seeding users"
 
 User.create(first_name: 'Test', last_name: 'Test', email: 'test@example.net', password: 'testpassword')
+20.times do
+    User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.safe_email, password: "jubjub" )
+end
 
 puts "seeding clubs"
 
@@ -23,5 +26,9 @@ puts "seeding membership"
 Membership.create(club_id: 1, user_id: 1)
 Membership.create(club_id: 3, user_id: 1)
 Membership.create(club_id: 4, user_id: 1)
+100.times do
+    Membership.create(club_id: rand(1..5), user_id: rand(2..21))
+end
+
 
 puts "done seeding"
