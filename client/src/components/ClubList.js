@@ -6,7 +6,7 @@ function ClubList({clubs, onMemberClick}){
     const clubArr = clubs.map(club => <Club club={club} onMemberClick={onMemberClick} key={club.id}/>)
 
     return(
-        <div>
+        <div className="clubList">
             {clubArr}
         </div>
     )

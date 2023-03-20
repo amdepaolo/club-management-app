@@ -7,6 +7,7 @@ function LandingPage({setUser}){
     
    return (
     <div>
+        <h1>Club Connection!</h1>
         {existingAccount? <Login onLogin={setUser}/>:<SignUp onSignUp={setUser}/>}
         <button onClick={()=> setExistingAccount(!existingAccount)}>
             {existingAccount? "Create a new account":"Log in to existing account"}

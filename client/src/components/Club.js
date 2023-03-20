@@ -11,9 +11,7 @@ function Club({club, onMemberClick}){
             }
           })
           .then(r => r.json())
-          .then(r => {
-            console.log(r)
-            onMemberClick(r.club_id, r.id)})
+          .then(r => {onMemberClick(r.club_id, r.id)})
     }
 
     function handleLeave(){

@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function NavBar(){
+function NavBar({logOut}){
 
     return(
-        <div>
+        <div id="navBar">
             <NavLink
                 to="/profile"
             >
@@ -19,6 +19,12 @@ function NavBar(){
                 to="/clubs"
             >
                 Clubs
+            </NavLink>
+            <NavLink
+                to='/logout'
+                onClick={logOut}
+            >
+                Log Out
             </NavLink>
         </div>
     )
