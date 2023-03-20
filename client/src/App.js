@@ -50,9 +50,10 @@ function App() {
   }
 
   function updateMembership(id, memberStatus){
+    const countChange = memberStatus? 1: -1;
     const updatedClubsList = clubs.map(club =>{
       if (id === club.id) {
-        return {...club, member_id: memberStatus }
+        return {...club, member_id: memberStatus, current_memberships: club.current_memberships + countChange }
       } else return club
     });
     setClubs(updatedClubsList)
@@ -62,10 +63,13 @@ function App() {
 
   else return (
     <div className="App">
-      <NavBar />
+      <NavBar logOut={logOut} />
       <h1>Club Connection!</h1>
       <button onClick={logOut}>Log Out</button>
       <Switch>
+        <Route path='/logout'>
+          <Redirect to='/'/>
+        </Route>
         <Route path='/profile'>
           <UserPage user={user} setUser={setUser} clubs={clubs}/>
         </Route>
