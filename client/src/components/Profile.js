@@ -7,12 +7,12 @@ function Profile({user, clubs}){
     const userClubsList = joinedClubs.map(club => <li key={club.id}>{club.name}</li>)
 
     return(
-        <div>
+        <div id="profile">
             <h2>Profile:</h2>
             <h3>{user.first_name} {user.last_name}</h3>
-            <p>Bio: {user.bio}</p>
+            <p><b>Bio:  </b>{user.bio}</p>
             <ul>
-                <p>Clubs:</p>
+                <p><b>Clubs: </b></p>
                 {userClubsList}
             </ul>
             <Link to='/profile/edit'>Edit Your Profile? </Link>

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function SignUp({onSignUp}){
+function SignUp({onSignUp, swapForm}){
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -25,20 +25,24 @@ function SignUp({onSignUp}){
         <div>
             <h2>Sign-Up:</h2>
             <form onSubmit={handleSubmit}>
+                <label><b>Email: </b></label>
                 <input 
                     type='text'
                     value={email} 
                     onChange={e => setEmail(e.target.value)} placeholder="email"></input>
+                <label><b>First Name: </b></label>
                 <input 
                     type='text' 
                     value={firstName} 
                     onChange={e => setFirstName(e.target.value)} 
                     placeholder="First Name"></input>
+                <label><b>Last Name: </b></label>
                 <input 
                     type='text' 
                     value={lastName} 
                     onChange={e => setLastName(e.target.value)}
                     placeholder="Last Name"></input>
+                <label><b>Password: </b></label>    
                 <input 
                     type='password' 
                     value={password} 
@@ -49,7 +53,8 @@ function SignUp({onSignUp}){
                     value={confirmation}
                     onChange={e => setConfirmation(e.target.value)} 
                     placeholder="Confirm Password"></input>
-                <input type='submit'></input>
+                <input type='submit' value='Create User'></input>
+                <button onClick={swapForm}>Log in to existing account</button>
             </form>
         </div>
     )

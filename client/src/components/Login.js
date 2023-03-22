@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function Login({onLogin}){
+function Login({onLogin, swapForm}){
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -21,17 +21,20 @@ function Login({onLogin}){
         <div>
             <h2>Log-in</h2>
             <form onSubmit={handleSubmit}>
+                <label><b>Email: </b></label>
                 <input  
                     type='text' 
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder='email'></input>
+                <label><b>Password: </b></label>
                 <input
                     type='password'
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder='password'></input>
-                <input type='submit' placeholder='Log-In'></input>
+                <input type='submit' value='Log-In'></input>
+                <button onClick={swapForm}>Create a new account</button>
             </form>
         </div>
     )

@@ -1,10 +1,9 @@
 * {
-  margin: 1rem, auto;
-  padding: 3 rem;
+  margin: auto;
+  padding: auto;
   text-align: left;
   font-family: Arial, Helvetica, sans-serif;
   width: auto;
-  align-items: center;
 }
 
 h1,h2,h3{
@@ -14,6 +13,24 @@ h1,h2,h3{
 
 h1{ color: darkgreen;}
 
+p, li, a{
+  padding: 0.25rem;
+}
+
+form{
+  max-width: 50%;
+}
+
+input, textarea{
+  width: 100%;
+  padding: 0.125rem;
+  margin: 1rem;
+}
+
+input[type=submit]{
+  width: auto;
+}
+
 .clubList{
   display: flex;
   flex-wrap: wrap;
@@ -22,8 +39,8 @@ h1{ color: darkgreen;}
 
 .club{
   max-width: 400px;
-  padding: 2px;
-  margin: 2px;
+  padding: 8px;
+  margin: 8px;
 }
 
 #navBar {
@@ -43,4 +60,21 @@ h1{ color: darkgreen;}
 #navBar a:hover{
   color: black;
   background-color: white;
+}
+
+#profile {
+  max-width: 50%;
+  text-align: center;
+  margin: auto;
+  padding: auto;
+}
+
+#display {
+  display: flex;
+  border: 2px;
+  flex: auto auto;
+  max-width: 60%;
+  margin: auto;
+  padding: 10px;
+  text-align: center;
 }

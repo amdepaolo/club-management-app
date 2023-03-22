@@ -4,14 +4,15 @@ import SignUp from "./SignUp";
 
 function LandingPage({setUser}){
     const[existingAccount, setExistingAccount] = useState(false)
+
+    function swapForm(){
+        setExistingAccount(!existingAccount)
+    }
     
    return (
     <div>
         <h1>Club Connection!</h1>
-        {existingAccount? <Login onLogin={setUser}/>:<SignUp onSignUp={setUser}/>}
-        <button onClick={()=> setExistingAccount(!existingAccount)}>
-            {existingAccount? "Create a new account":"Log in to existing account"}
-        </button>
+        {existingAccount? <Login onLogin={setUser} swapForm={swapForm}/>:<SignUp onSignUp={setUser} swapForm={swapForm}/>}
     </div>
    )
 

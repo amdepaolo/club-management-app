@@ -8,7 +8,7 @@ function ClubDetail({clubs, onMemberClick}){
     const selectedClub = clubs.find(club => club.id === parseInt(params.clubId))
 
     return(
-        <div>
+        <div id="display">
             <Club club={selectedClub} onMemberClick={onMemberClick}/>
             <Roster club={selectedClub}/>
         </div>

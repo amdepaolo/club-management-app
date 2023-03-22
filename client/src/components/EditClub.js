@@ -48,8 +48,9 @@ function EditClub({clubs, onUpdateClick, onDeleteClick, purpose }){
                 updateClubObj={updateClubObj}
                 handleSubmit={handleUpdate}
                 submitValue='Save Edit'
-            />    
-            <button onClick={handleDelete}>Delete Club</button>
+            >    
+                <button onClick={handleDelete}>Delete Club</button>
+            </ClubForm>
         </div>
     )
 }

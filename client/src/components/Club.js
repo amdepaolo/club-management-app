@@ -37,8 +37,8 @@ function Club({club, onMemberClick}){
             <p><b>Description:</b> {club.description}</p>
             <p> <b>Members:</b> {club.current_memberships} of {club.max_membership} enrolled </p>
             {club.member_id? leaveButton:joinButton}
-            <Link to={`/clubs/${club.id}`}>View</Link>
-            <Link to={`/clubs/${club.id}/edit`}>Edit?</Link>
+            <Link to={`/clubs/${club.id}`}><button>View</button></Link>
+            <Link to={`/clubs/${club.id}/edit`}><button>Edit?</button></Link>
         </div>
     )
 }

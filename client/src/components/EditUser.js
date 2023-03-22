@@ -57,8 +57,8 @@ function EditUser({user, setUser}){
                     onChange={e => setBio(e.target.value)}
                 ></textarea>
                 <input type='submit' value='Save Changes'></input>
+                <button onClick={handleDelete}>Delete User?</button>
             </form>
-            <button onClick={handleDelete}>Delete User?</button>
         </div>
     )
 
