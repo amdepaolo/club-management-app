@@ -45,5 +45,5 @@ Ideas:
 
 TO-DO:
 
-- Update abilities for Users and clubs
-- Delete Users and Clubs
+- Update and delete abilities for Users - 
+- View Roster
