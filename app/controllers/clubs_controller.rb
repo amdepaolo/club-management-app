@@ -7,7 +7,7 @@ class ClubsController < ApplicationController
 
     def show
         club = Club.find(params[:id])
-        render json: club 
+        render json: club, user_id: session[:user_id]
     end
 
     def create
@@ -18,7 +18,7 @@ class ClubsController < ApplicationController
     def update
         club = Club.find(params[:id])
         club.update(club_params)
-        render json: club, status: :accepted
+        render json: club, user_id: session[:user_id], status: :accepted
     end
 
     def destroy
