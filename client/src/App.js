@@ -59,13 +59,12 @@ function App() {
     setClubs(updatedClubsList)
   };
 
-  if (!user) return( <LandingPage setUser={setUser} /> )
+  if (!user) return( <LandingPage setUser={setUser} />)
 
   else return (
     <div className="App">
       <NavBar logOut={logOut} />
       <h1>Club Connection!</h1>
-      <button onClick={logOut}>Log Out</button>
       <Switch>
         <Route path='/logout'>
           <Redirect to='/'/>

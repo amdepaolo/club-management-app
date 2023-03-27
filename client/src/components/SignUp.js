@@ -17,8 +17,10 @@ function SignUp({onSignUp, swapForm}){
             },
             body: JSON.stringify(newUserObj),
           })
-        .then(r => r.json())
-        .then(onSignUp)
+        .then(r => {if (r.ok){
+            r.json().then(onSignUp)
+          } else {window.alert("Sign-up Error. Check email and password")}
+        })
     }
 
     return(

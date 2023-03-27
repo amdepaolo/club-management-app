@@ -13,8 +13,10 @@ function Login({onLogin, swapForm}){
             },
             body: JSON.stringify({ email: email, password: password }),
           })
-        .then(r => r.json())
-        .then(onLogin)
+        .then(r => {if (r.ok){
+            r.json().then(onLogin)
+          } else {window.alert("Log-in error. Check email and password")}
+        })
     }
 
     return (
