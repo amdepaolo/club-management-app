@@ -23,8 +23,12 @@ class ClubsController < ApplicationController
 
     def destroy
         club = Club.find(params[:id])
-        club.destroy
-        head :no_content
+        if club.admin_id == session[:user_id]
+            club.destroy
+            head :no_content
+        else
+            render json: {error: "User is not club admin, can't delete"}, status: :unauthorized
+        end
     end
 
     private

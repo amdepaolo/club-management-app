@@ -16,11 +16,11 @@ end
 
 puts "seeding clubs"
 
-Club.create(name: "Cooking Club", description: Faker::Lorem.paragraph, meeting_time: "Tuesdays from 2:30-4:30", meeting_area: "Cafeteria", max_membership: 30)
-Club.create(name: "D&D/RPG meetup", description: Faker::Lorem.paragraph, meeting_time: "Fridays 4-7pm", meeting_area: "Room 203", max_membership: 10)
-Club.create(name: "Book Club", description: Faker::Lorem.paragraph, meeting_time: "First Wednesday of the month, from 3-5", meeting_area: "Library", max_membership: 20)
-Club.create(name: "Drama club", description: Faker::Lorem.paragraph, meeting_time: "TBA", meeting_area: "Auditorium", max_membership: 60)
-Club.create(name: "Photography Club", description: Faker::Lorem.paragraph, meeting_time: "Every other Monday from 3:30-5", meeting_area: "Cafeteria", max_membership: 18)
+Club.create(name: "Cooking Club", description: Faker::Lorem.paragraph, meeting_time: "Tuesdays from 2:30-4:30", meeting_area: "Cafeteria", max_membership: 30, admin_id: 1)
+Club.create(name: "D&D/RPG meetup", description: Faker::Lorem.paragraph, meeting_time: "Fridays 4-7pm", meeting_area: "Room 203", max_membership: 10, admin_id: 1)
+Club.create(name: "Book Club", description: Faker::Lorem.paragraph, meeting_time: "First Wednesday of the month, from 3-5", meeting_area: "Library", max_membership: 20, admin_id: 2)
+Club.create(name: "Drama club", description: Faker::Lorem.paragraph, meeting_time: "TBA", meeting_area: "Auditorium", max_membership: 60, admin_id: 3)
+Club.create(name: "Photography Club", description: Faker::Lorem.paragraph, meeting_time: "Every other Monday from 3:30-5", meeting_area: "Cafeteria", max_membership: 18, admin_id: 4)
 
 puts "seeding membership"
 Membership.create(club_id: 1, user_id: 1)
