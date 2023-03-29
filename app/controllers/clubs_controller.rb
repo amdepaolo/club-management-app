@@ -11,14 +11,20 @@ class ClubsController < ApplicationController
     end
 
     def create
-        club = Club.create(club_params)
+        club = Club.new(club_params)
+        club.admin_id = session[:user_id]
+        club.save
         render json: club, status: :created
     end
 
     def update
         club = Club.find(params[:id])
-        club.update(club_params)
-        render json: club, user_id: session[:user_id], status: :accepted
+        if club.admin_id == session[:user_id]
+            club.update(club_params)
+            render json: club, user_id: session[:user_id], status: :accepted
+        else 
+            render json: {error: "User is not club admin, can't edit"}, status: :unauthorized
+        end
     end
 
     def destroy
@@ -34,6 +40,6 @@ class ClubsController < ApplicationController
     private
 
     def club_params
-        params.permit(:name, :description, :meeting_area, :meeting_time, :max_membership)
+        params.permit(:name, :description, :meeting_area, :meeting_time, :max_membership, :admin_id)
     end
 end
