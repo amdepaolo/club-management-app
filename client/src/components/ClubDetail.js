@@ -10,7 +10,11 @@ function ClubDetail({clubs, onMemberClick}){
     return(
         <div id="display">
             <Club club={selectedClub} onMemberClick={onMemberClick}/>
-            <Roster club={selectedClub}/>
+            <div>
+                <h2>Club Administrator:</h2>
+                <p>{selectedClub.admin.first_name} {selectedClub.admin.last_name}</p>
+                <Roster club={selectedClub}/>
+            </div>
         </div>
     )
 }

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     def show 
         user = User.find(session[:user_id])
-        render json: user
+        render json: user, user_id: session[:user_id]
     rescue ActiveRecord::RecordNotFound
         render json: {errors: ["no user logged in"]}, status: :unprocessable_entity
     end

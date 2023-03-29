@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Profile({user, clubs}){
+function Profile({user}){
 
-    const joinedClubs = clubs.filter(club => club.member_id)
-    const userClubsList = joinedClubs.map(club => <li key={club.id}>{club.name}</li>)
+    const joinedClubs = user.clubs
+    const adminedClubs = user.administrations
+    const joinedClubsList = joinedClubs.map(club => <li key={club.id}>{club.name}</li>)
+    const adminedClubsList = adminedClubs.map(club => <li key={club.id}>{club.name}</li>)
 
     return(
         <div id="profile">
@@ -12,8 +14,12 @@ function Profile({user, clubs}){
             <h3>{user.first_name} {user.last_name}</h3>
             <p><b>Bio:  </b>{user.bio}</p>
             <ul>
-                <p><b>Clubs: </b></p>
-                {userClubsList}
+                <p><b>Member of: </b></p>
+                {joinedClubsList}
+            </ul>
+            <ul>
+                <p><b>Admin of: </b></p>
+                {adminedClubsList}
             </ul>
             <Link to='/profile/edit'>Edit Your Profile? </Link>
         </div>
