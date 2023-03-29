@@ -13,8 +13,10 @@ class ClubsController < ApplicationController
     def create
         club = Club.new(club_params)
         club.admin_id = session[:user_id]
-        club.save
+        club.save!
         render json: club, status: :created
+    rescue ActiveRecord::RecordInvalid => invalid
+        render json: {errors: invalid.record.errors}, status: :unprocessable_entity
     end
 
     def update
