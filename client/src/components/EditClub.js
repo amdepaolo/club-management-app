@@ -21,8 +21,9 @@ function EditClub({clubs, onUpdateClick, onDeleteClick }){
             },
             body: JSON.stringify(club)
           })
-        .then(r => r.json())
-        .then(r => onUpdateClick(r))
+        .then(r => {if (r.ok){
+            r.json().then(onUpdateClick)
+          } else {window.alert("Can't update, no admin priviliges")}})
         history.push('/')
     }
 
@@ -35,7 +36,7 @@ function EditClub({clubs, onUpdateClick, onDeleteClick }){
                 }})
                 .then(r => {if (r.ok){
                     onDeleteClick(club.id)
-                }})
+                }else{window.alert("Can't delete, check admin priviliges")}})
             history.push('/')
         }
     }
