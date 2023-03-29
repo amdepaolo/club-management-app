@@ -49,15 +49,33 @@ function App() {
     setClubs(updatedClubsList)
   }
 
-  function updateMembership(id, memberStatus){
-    const countChange = memberStatus? 1: -1;
+  
+  function addMembership(response){
     const updatedClubsList = clubs.map(club =>{
-      if (id === club.id) {
-        return {...club, member_id: memberStatus, current_memberships: club.current_memberships + countChange }
+      if (club.id === response.club_id) {
+        return {...club, member_id: response.id, current_memberships: club.current_memberships+1, users: [...club.users, response.user] }
       } else return club
     });
     setClubs(updatedClubsList)
+    const updatedUser = {...user, clubs: [...user.clubs, response.club]}
+    setUser(updatedUser)
   };
+
+  function removeMembership(clubID){
+    const updatedClubsList = clubs.map(club =>{
+      if (club.id === clubID) {
+        return {
+          ...club, 
+          member_id: false, 
+          current_memberships: club.current_memberships-1, 
+          users: club.users.filter(u => u.id !== user.id ) }
+      } else return club
+    });
+    setClubs(updatedClubsList)
+    const updatedUser = {...user, clubs: user.clubs.filter(c => c.id !== clubID )}
+    setUser(updatedUser)
+
+  }
 
   if (!user) return( <LandingPage setUser={setUser} />)
 
@@ -70,7 +88,7 @@ function App() {
           <Redirect to='/'/>
         </Route>
         <Route path='/profile'>
-          <UserPage user={user} setUser={setUser} clubs={clubs}/>
+          <UserPage user={user} setUser={setUser}/>
         </Route>
         <Route exact path='/create'>
           <CreateClub addClubs={addClubs} />
@@ -79,7 +97,8 @@ function App() {
           <ClubsPage 
             clubs={clubs} 
             updateClubs={updateClubs} 
-            updateMembership={updateMembership} 
+            addMembership={addMembership} 
+            removeMembership={removeMembership}
             deleteClubs={deleteClubs}/>
         </Route>
         <Route path='/'>

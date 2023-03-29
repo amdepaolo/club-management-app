@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Club({club, onMemberClick}){
+function Club({club, addMembership, removeMembership}){
 
     function handleJoin(){
         fetch('/clubs/'+club.id+'/memberships', {
@@ -11,7 +11,7 @@ function Club({club, onMemberClick}){
             }
           })
           .then(r => r.json())
-          .then(r => {onMemberClick(r.club_id, r.id)})
+          .then(addMembership)
     }
 
     function handleLeave(){
@@ -21,7 +21,7 @@ function Club({club, onMemberClick}){
                 "Content-Type": "application/json",
             }
         })
-        .then(r=> {if(r.ok){ onMemberClick(club.id, false)
+        .then(r=> {if(r.ok){ removeMembership(club.id)
         }})
     }
 

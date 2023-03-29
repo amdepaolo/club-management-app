@@ -4,7 +4,7 @@ import ClubDetail from "./ClubDetail";
 import ClubList from "./ClubList";
 import EditClub from "./EditClub";
 
-function ClubsPage({clubs, updateClubs, deleteClubs, updateMembership}){
+function ClubsPage({clubs, updateClubs, deleteClubs, addMembership, removeMembership}){
     const match = useRouteMatch();
     
     return(      
@@ -13,10 +13,10 @@ function ClubsPage({clubs, updateClubs, deleteClubs, updateMembership}){
                 <EditClub clubs={clubs} onDeleteClick={deleteClubs} onUpdateClick={updateClubs} />
             </Route>
             <Route path={`${match.url}/:clubId`}>
-                <ClubDetail clubs={clubs} onMemberClick={updateMembership}/>
+                <ClubDetail clubs={clubs} addMembership={addMembership} removeMembership={removeMembership}/>
             </Route>
             <Route exact path={match.url}>
-                <ClubList clubs={clubs} onMemberClick={updateMembership}/>
+                <ClubList clubs={clubs} addMembership={addMembership} removeMembership={removeMembership}/>
             </Route>
         </Switch>
     )

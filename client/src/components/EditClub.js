@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { useHistory, useParams } from "react-router-dom";
 import ClubForm from "./ClubForm";
 
-function EditClub({clubs, onUpdateClick, onDeleteClick, purpose }){
+function EditClub({clubs, onUpdateClick, onDeleteClick }){
     const params = useParams();
     const [club, setClub] = useState(clubs.find(club => club.id === parseInt(params.clubId)))
     const history = useHistory();
