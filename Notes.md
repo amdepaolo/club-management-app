@@ -47,3 +47,6 @@ TO-DO:
 
 - Update and delete abilities for Users - 
 - View Roster
+to do: 
+-validations for club
+- user submitted attribute for memberships

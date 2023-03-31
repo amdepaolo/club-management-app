@@ -5,8 +5,8 @@ function Profile({user}){
 
     const joinedClubs = user.clubs
     const adminedClubs = user.administrations
-    const joinedClubsList = joinedClubs.map(club => <li key={club.id}>{club.name}</li>)
-    const adminedClubsList = adminedClubs.map(club => <li key={club.id}>{club.name}</li>)
+    const joinedClubsList = joinedClubs.map(club => <li key={club.id}>{club.name}{club.favorited? "⭐":""}</li>)
+    const adminedClubsList = adminedClubs.map(club => <li key={club.id}>{club.name}{club.favorited? "⭐":""}</li>)
 
     return(
         <div id="profile">

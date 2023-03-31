@@ -4,19 +4,19 @@ import ClubDetail from "./ClubDetail";
 import ClubList from "./ClubList";
 import EditClub from "./EditClub";
 
-function ClubsPage({clubs, updateClubs, deleteClubs, addMembership, removeMembership}){
+function ClubsPage({clubs, updateClubs, deleteClubs, addMembership, removeMembership, updateFavorite}){
     const match = useRouteMatch();
     
     return(      
         <Switch>
             <Route path={`${match.url}/:clubId/edit`}>
-                <EditClub clubs={clubs} onDeleteClick={deleteClubs} onUpdateClick={updateClubs} />
+                <EditClub clubs={clubs} onDeleteClick={deleteClubs} onUpdateClick={updateClubs}/>
             </Route>
             <Route path={`${match.url}/:clubId`}>
-                <ClubDetail clubs={clubs} addMembership={addMembership} removeMembership={removeMembership}/>
+                <ClubDetail clubs={clubs} addMembership={addMembership} removeMembership={removeMembership} updateFavorite={updateFavorite}/>
             </Route>
             <Route exact path={match.url}>
-                <ClubList clubs={clubs} addMembership={addMembership} removeMembership={removeMembership}/>
+                <ClubList clubs={clubs} addMembership={addMembership} removeMembership={removeMembership} updateFavorite={updateFavorite}/>
             </Route>
         </Switch>
     )

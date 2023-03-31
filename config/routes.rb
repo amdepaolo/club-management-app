@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/hello', to: 'application#hello_world'
   resources :users, only: [:create, :update, :destroy]
   resources :clubs do
-    resources :memberships, only: [:index, :create, :destroy]
+    resources :memberships, only: [:index, :create, :destroy, :update]
   end
   get '/me', to: 'users#show'
   post '/login', to: 'sessions#create'

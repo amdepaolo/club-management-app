@@ -49,7 +49,6 @@ function App() {
     setClubs(updatedClubsList)
   }
 
-  
   function addMembership(response){
     const updatedClubsList = clubs.map(club =>{
       if (club.id === response.club_id) {
@@ -67,6 +66,7 @@ function App() {
         return {
           ...club, 
           member_id: false, 
+          favorited: false,
           current_memberships: club.current_memberships-1, 
           users: club.users.filter(u => u.id !== user.id ) }
       } else return club
@@ -74,7 +74,19 @@ function App() {
     setClubs(updatedClubsList)
     const updatedUser = {...user, clubs: user.clubs.filter(c => c.id !== clubID )}
     setUser(updatedUser)
+  }
 
+  function updateFavorite(response){
+    const updatedClubsList = clubs.map(club =>{
+      if (club.id === response.club_id) {
+        return {
+          ...club, 
+          favorited: response.favorite }
+      } else return club
+    });
+    setClubs(updatedClubsList)
+    const updatedUser = {...user, clubs: updatedClubsList.filter(club => club.member_id), administrations: updatedClubsList.filter(club => club.admin_id === user.id)}
+    setUser(updatedUser)
   }
 
   if (!user) return( <LandingPage setUser={setUser} />)
@@ -99,6 +111,7 @@ function App() {
             updateClubs={updateClubs} 
             addMembership={addMembership} 
             removeMembership={removeMembership}
+            updateFavorite={updateFavorite}
             deleteClubs={deleteClubs}/>
         </Route>
         <Route path='/'>
