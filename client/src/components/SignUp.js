@@ -19,7 +19,7 @@ function SignUp({onSignUp, swapForm}){
           })
         .then(r => {if (r.ok){
             r.json().then(onSignUp)
-          } else {window.alert("Sign-up Error. Check email and password")}
+          } else {window.alert("Sign-up Error. Check entered information")}
         })
     }
 
