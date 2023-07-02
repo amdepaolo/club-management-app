@@ -51,7 +51,7 @@ function Club({club, addMembership, removeMembership, updateFavorite}){
             {club.member_id? leaveButton:joinButton}
             {club.member_id? favoriteButton: <button disabled>Favorite?</button>}
             <Link to={`/clubs/${club.id}`}><button>View</button></Link>
-            <Link to={`/clubs/${club.id}/edit`}><button>Edit?</button></Link>
+            {club.user_is_admin? <Link to={`/clubs/${club.id}/edit`}><button>Edit?</button></Link>:<></>}
         </div>
     )
 }

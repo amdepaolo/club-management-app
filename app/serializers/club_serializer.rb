@@ -1,5 +1,5 @@
 class ClubSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :meeting_area, :meeting_time, :member_id, :favorited, :current_memberships, :max_membership, :admin_id
+  attributes :id, :name, :description, :meeting_area, :meeting_time, :member_id, :favorited, :current_memberships, :max_membership, :admin_id, :user_is_admin
   has_many :users
   belongs_to :admin
 
@@ -9,6 +9,10 @@ class ClubSerializer < ActiveModel::Serializer
       membership.id
     else false
     end
+  end
+
+  def user_is_admin
+    self.object.admin_id == instance_options[:user_id]
   end
 
   def favorited
